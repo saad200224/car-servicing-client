@@ -3,19 +3,20 @@ import logoImage from '../../../src/assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
-const Login = () => {
+const SignUp = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
 
-    const handleLogin = event => {
+    const handleSignUp = event => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email, password)
+        console.log(name, email, password)
 
-        signIn(email, password)
+        createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -31,8 +32,14 @@ const Login = () => {
                     <img src={logoImage} alt="" />
                 </div>
                 <div className="card flex-shrink-0  max-w-sm shadow-2xl bg-base-100 w-full">
-                    <form onSubmit={handleLogin} className="card-body">
-                        <h1 className="text-5xl font-bold">Login!</h1>
+                    <form onSubmit={handleSignUp} className="card-body">
+                        <h1 className="text-5xl font-bold">Sign Up </h1>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input name='name' type="name" placeholder="name" className="input input-bordered" required />
+                        </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -44,19 +51,19 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input name='password' type="password" placeholder="password" className="input input-bordered" required />
-                            <label className="label">
+                            {/* <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            </label> */}
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn btn-primary" type="submit" value="Submit" />
                         </div>
                     </form>
-                    <p className='text-center my-4'>New to Car Service <Link className='text-orange-500 font-medium' to='/signup'>Sign Up</Link></p>
+                    <p className='text-center my-4'>Already have an account <Link className='text-orange-500 font-medium' to='/login'>Sign In</Link></p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default SignUp;
