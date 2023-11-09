@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
+
 const ServiceCard = ( {service} ) => {
 
-    const { title, img, price  } = service;
+    const { title, img, price } = service;
 
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
@@ -9,7 +11,7 @@ const ServiceCard = ( {service} ) => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{title}</h2>
-                <p className="text-orange-500">Price: {price}</p>
+                <p className="font-medium">Price: {price}.BDT</p>
                 <div className="card-actions">
                     <button className="btn btn-primary">Buy Now</button>
                 </div>
@@ -17,5 +19,9 @@ const ServiceCard = ( {service} ) => {
         </div>
     );
 };
+
+ServiceCard.propTypes = {
+    service: PropTypes.object
+}
 
 export default ServiceCard;
