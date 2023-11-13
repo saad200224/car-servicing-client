@@ -23,7 +23,7 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const loggedInUser = result.user;
-                console.log(loggedInUser);
+                // console.log(loggedInUser);
 
                 const user = { email };
 
@@ -32,7 +32,7 @@ const Login = () => {
                     withCredentials: true
                 })
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                         if (res.data.success) {
                             navigate(location?.state ? location?.state : '/')
                         }
