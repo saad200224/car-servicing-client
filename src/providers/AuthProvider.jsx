@@ -36,13 +36,13 @@ const AuthProvider = ( {children} ) => {
             setLoading(false);
             // if user exists then we will issue token
             if(currentUser){
-                axios.post( 'http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                axios.post( 'https://car-servicing-server-psi.vercel.app/jwt', loggedUser, { withCredentials: true })
                 .then(res => {
                     console.log(res.data)
                 })
             }
             else{
-                axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
+                axios.post('https://car-servicing-server-psi.vercel.app/logout', loggedUser, { withCredentials: true })
                 .then(res =>{
                     console.log(res.data)
                 })
